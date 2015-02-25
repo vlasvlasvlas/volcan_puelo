@@ -25,7 +25,7 @@
 				
 				<script src='http://apps.se.gob.ar/tmp/exp_igns250departamentos.js' ></script>
 				
-				<script src='http://apps.se.gob.ar/tmp/puntos.js' ></script>
+
 				
 	<script>
 		var map = L.map('map', { zoomControl:true }).fitBounds([[-42.9262502182,-72.8566146014],[-41.6995464177,-69.9441333779]]);
@@ -117,7 +117,18 @@ var overlay_022520151kmsharpen250mband654VLADI = L.imageOverlay(imageUrl, imageB
 						//add comment sign to hide this layer on the map in the initial view.
 						exp_igns250provinciasJSON.addTo(map);
 						
-						
+			
+			
+			var puntos = {
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "color_qgis2leaf": '#000000', "border_color_qgis2leaf": '#0099FF', "radius_qgis2leaf": 7.5, "transp_qgis2leaf": 1.0, "transp_fill_qgis2leaf": 0.513725490196,  "id": 3 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ -71.797999672416395, -42.474155542943819 ] ] } },
+{ "type": "Feature", "properties": { "color_qgis2leaf": '#000000', "border_color_qgis2leaf": '#0099FF', "radius_qgis2leaf": 7.5, "transp_qgis2leaf": 1.0, "transp_fill_qgis2leaf": 0.513725490196,  "id": 2 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ -71.527353152114358, -42.415951990190692 ] ] } },
+{ "type": "Feature", "properties": { "color_qgis2leaf": '#000000', "border_color_qgis2leaf": '#0099FF', "radius_qgis2leaf": 7.5, "transp_qgis2leaf": 1.0, "transp_fill_qgis2leaf": 0.513725490196,  "id": 1 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ -71.768897896039832, -42.324281394604526 ] ] } }
+]
+};			
 				var puntosJSON = new L.geoJson(puntos,{
 					style: function (feature) {
 						return {color: feature.properties.border_color_qgis2leaf,
