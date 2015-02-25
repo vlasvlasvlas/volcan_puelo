@@ -21,9 +21,9 @@
 	<script src="js/label.js"></script>
 	<script src="js/leaflet.markercluster.js"></script>
 	<input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)">
-				<script src='data/exp_igns250provincias.js' ></script>
+				<script src='http://apps.se.gob.ar/tmp/exp_igns250provincias.js' ></script>
 				
-				<script src='data/exp_igns250departamentos.js' ></script>
+				<script src='http://apps.se.gob.ar/tmp/exp_igns250departamentos.js' ></script>
 				
 	<script>
 		var map = L.map('map', { zoomControl:true }).fitBounds([[-42.9262502182,-72.8566146014],[-41.6995464177,-69.9441333779]]);
@@ -53,7 +53,7 @@
 					
 					
 					
-var imageUrl = 'exo.jpg',
+var imageUrl = 'http://apps.se.gob.ar/tmp/exo.jpg',
     imageBounds = [[-43.1808436793,-73.3973415095],[-40.8333003849,-70.3063344079]];
 
 var overlay_022520151kmsharpen250mband654VLADI = L.imageOverlay(imageUrl, imageBounds).addTo(map);
