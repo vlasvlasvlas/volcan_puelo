@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head> 
-	<title>Volcanes en Chubut - Parque Nacional Lago Puelo</title>
+	<title>Posible Volcan en erupción en Chubut - Parque Nacional Lago Puelo</title>
 	
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" /> <!-- we will us e this as the styling script for our webmap-->
@@ -24,6 +24,8 @@
 				<script src='http://apps.se.gob.ar/tmp/exp_igns250provincias.js' ></script>
 				
 				<script src='http://apps.se.gob.ar/tmp/exp_igns250departamentos.js' ></script>
+				
+				<script src='http://apps.se.gob.ar/tmp/puntos.json' ></script>
 				
 	<script>
 		var map = L.map('map', { zoomControl:true }).fitBounds([[-42.9262502182,-72.8566146014],[-41.6995464177,-69.9441333779]]);
@@ -114,6 +116,20 @@ var overlay_022520151kmsharpen250mband654VLADI = L.imageOverlay(imageUrl, imageB
 				
 						//add comment sign to hide this layer on the map in the initial view.
 						exp_igns250provinciasJSON.addTo(map);
+						
+						
+				var puntosJSON = new L.geoJson(puntos,{
+					style: function (feature) {
+						return {color: feature.properties.border_color_qgis2leaf,
+								fillColor: feature.properties.color_qgis2leaf,
+								weight: feature.properties.radius_qgis2leaf,
+								opacity: feature.properties.transp_qgis2leaf,
+								fillOpacity: 0};
+						}
+					});
+				feature_group.addLayer(puntosJSON);
+				
+				
 		var title = new L.Control();
 		title.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -121,7 +137,7 @@ var overlay_022520151kmsharpen250mband654VLADI = L.imageOverlay(imageUrl, imageB
 			return this._div;
 	    };
 	    title.update = function () {
-			this._div.innerHTML = '<h2>Seguimiento volcanes activos Parque Nacional Lago Puelo</h2>Producido Por Secretaría de Energía, Tecnología de la Información, Sensores remotos.'
+			this._div.innerHTML = '<h2>Seguimiento posible Volcán en erupción sobre Parque Nacional Lago Puelo</h2>Producido Por Secretaría de Energía, Tecnología de la Información, Sensores remotos.'
 		};
 		title.addTo(map);
 
@@ -130,7 +146,7 @@ var overlay_022520151kmsharpen250mband654VLADI = L.imageOverlay(imageUrl, imageB
 		'OSM': basemap_0,
 		'Aereo': basemap_1
 	};
-	L.control.layers(baseMaps,{"IGN Provincias": exp_igns250provinciasJSON,"IGN Departamentos": exp_igns250departamentosJSON,"Raster 02-25-2015-1km-sharpen-250m-band654": overlay_022520151kmsharpen250mband654VLADI},{collapsed:false}).addTo(map);
+		L.control.layers(baseMaps,{"IGN Provincias": exp_igns250provinciasJSON,"IGN Departamentos": exp_igns250departamentosJSON,"Posible Erupción": puntosJSON,"Raster 02-25-2015-1km-sharpen-250m-band654": overlay_022520151kmsharpen250mband654VLADI},{collapsed:false}).addTo(map);
 		function updateOpacity(value) {
 		
 							overlay_022520151kmsharpen250mband654VLADI.setOpacity(value)}
